@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="desktop:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/desktop_jar</output-path>
+    <root id="archive" name="desktop.jar">
+      <element id="module-output" name="desktop" />
+      <element id="module-output" name="libgdxUtilsTest" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/gdx.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/gdx-sources.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/desktop/libs/gdx-natives.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/desktop/libs/gdx-backend-lwjgl.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/desktop/libs/gdx-backend-lwjgl-natives.jar" path-in-jar="/" />
+      <element id="dir-copy" path="$PROJECT_DIR$/android/assets" />
+    </root>
+  </artifact>
+</component>

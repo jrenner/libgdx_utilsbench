@@ -1,0 +1,6 @@
+*.jar
+libs
+android/libs
+desktop/libs
+*.iml
+out
