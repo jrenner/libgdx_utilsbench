@@ -110,7 +110,6 @@ public class MapTests {
 		System.gc();
 		IdentityMap<DummyObject, Integer> map = new IdentityMap<>();
 		String testName = map.getClass().getSimpleName();
-		updateStatus("Running test: " + testName);
 		int i = 0;
 		PerformanceCounter perf = new PerformanceCounter(testName);
 		while (i < loopCount) {
@@ -142,7 +141,6 @@ public class MapTests {
 		System.gc();
 		LongMap<DummyObject> map = new LongMap<>();
 		String testName = map.getClass().getSimpleName();
-		updateStatus("Running test: " + testName);
 		int i = 0;
 		PerformanceCounter perf = new PerformanceCounter(testName);
 		while (i < loopCount) {
@@ -213,7 +211,7 @@ public class MapTests {
 			perf.stop();
 			perf.tick();
 
-			printCounter(perf, "");
+			updateStatus(String.format("Total time taken for all tests: %.3fms", perf.time.total * 1000));
 			runningTests = false;
 		}
 	};
