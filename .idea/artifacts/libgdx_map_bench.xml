@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="apk" name="libgdx-map-bench">
+    <output-path>$PROJECT_DIR$/out/artifacts/libgdx_map_bench</output-path>
+    <properties id="android-properties">
+      <options>
+        <option name="includeSystemProGuardCfgFile" value="true" />
+        <option name="keyAlias" value="benchkey" />
+        <option name="keyPassword" value="bGFtcHJleQ==" />
+        <option name="keyStorePassword" value="bGFtcHJleQ==" />
+        <option name="keyStoreUrl" value="file://$USER_HOME$/Dropbox/bench.key" />
+        <option name="proGuardCfgFileUrl" value="file://$PROJECT_DIR$/android/proguard-project.txt" />
+        <option name="signingMode" value="RELEASE_SIGNED" />
+      </options>
+    </properties>
+    <root id="archive" name="libgdx-map-bench.apk">
+      <element id="android-final-package" facet="android/android/Android" />
+      <element id="module-output" name="android" />
+    </root>
+  </artifact>
+</component>

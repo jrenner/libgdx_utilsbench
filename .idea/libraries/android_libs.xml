@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="androidLibs">
+  <library name="android-libs">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/android/libs" />
     </CLASSES>

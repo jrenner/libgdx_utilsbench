@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/android/android.iml" filepath="$PROJECT_DIR$/android/android.iml" />
-      <module fileurl="file:///media/terry/libgdxUtilsTest/Desktop/desktop.iml" filepath="/media/terry/libgdxUtilsTest/Desktop/desktop.iml" />
-      <module fileurl="file:///media/terry/libgdxUtilsTest/libgdxUtilsTest.iml" filepath="/media/terry/libgdxUtilsTest/libgdxUtilsTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/desktop/desktop.iml" filepath="$PROJECT_DIR$/desktop/desktop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libgdxUtilsTest.iml" filepath="$PROJECT_DIR$/libgdxUtilsTest.iml" />
     </modules>
   </component>
 </project>

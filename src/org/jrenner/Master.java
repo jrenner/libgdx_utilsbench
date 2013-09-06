@@ -3,13 +3,19 @@ package org.jrenner;
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
-import com.badlogic.gdx.scenes.scene2d.utils.Align;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.utils.*;
 
 import java.util.*;
 import java.util.List;
@@ -68,8 +74,20 @@ public class Master implements ApplicationListener {
 
 	private static void initSkin() {
 		skin = new Skin(Gdx.files.internal("ui/ui.json"));
+		ScrollPane.ScrollPaneStyle scrollPaneStyle = skin.get(ScrollPane.ScrollPaneStyle.class);
+		SpriteDrawable bg = new SpriteDrawable();
+		Pixmap pixmap = new Pixmap(128, 128, Pixmap.Format.RGB888);
+		pixmap.setColor(new Color(0.1f, 0.1f, 0.1f, 1));
+		pixmap.fill();
+		Texture tex = new Texture(pixmap);
+		Sprite sprite = new Sprite(tex);
+		bg.setSprite(sprite);
+		scrollPaneStyle.background = bg;
+
 		if (Gdx.graphics.getWidth() < 1300) {
-			BitmapFont smallFont = new BitmapFont(Gdx.files.internal("ui/source20.fnt"), false);
+			//BitmapFont smallFont = new BitmapFont(Gdx.files.internal("ui/source20.fnt"), false);
+			BitmapFont smallFont = new BitmapFont(Gdx.files.internal("ui/ubuntu-mono16.fnt"), false);
+
 			Label.LabelStyle labelStyle = skin.get(Label.LabelStyle.class);
 			labelStyle.font = smallFont;
 
@@ -104,10 +122,10 @@ public class Master implements ApplicationListener {
 		};
 		benchBtn.addListener(runTests);
 
-		Integer[] choices = {1000, 10000, 25000, 50000, 100000, 1000000};
+		Integer[] choices = {1000, 5000, 10000, 20000, 50000, 100000};
 
 		Label loopLabel = new Label("Iterations: ", skin);
-		table.add(loopLabel);
+		table.add(loopLabel).size(btnWidth, btnHeight);
 
 		SelectBox loopSelector = new SelectBox(choices, skin);
 		ChangeListener select = new ChangeListener() {
@@ -124,13 +142,15 @@ public class Master implements ApplicationListener {
 
 		statusLabel = new Label("waiting for user...", skin);
 		statusLabel.setWrap(true);
+
 		Table tableTwo = new Table(skin);
 		tableTwo.size(WIDTH, HEIGHT - table.getHeight());
 		tableTwo.align(Align.left | Align.bottom);
 		int padAmount = 20;
 		tableTwo.pad(padAmount);
 		stage.addActor(tableTwo);
-		tableTwo.add(statusLabel).align(Align.bottom | Align.left).width(stage.getWidth() - padAmount * 2);
+		ScrollPane scrollPane = new ScrollPane(statusLabel, skin);
+		tableTwo.add(scrollPane).align(Align.bottom | Align.left).width(stage.getWidth() - padAmount * 2);
 		tableTwo.row();
 		TextButton exitBtn = new TextButton("Exit", skin);
 		tableTwo.add(exitBtn).size(btnWidth, btnHeight).align(Align.center);
@@ -159,10 +179,10 @@ public class Master implements ApplicationListener {
 
 	public static synchronized void processTextLineAdditions() {
 		// wait for the render thread to finish a loop
-		int maxLines = 20;
-		while (statusLines.size() > 0 && statusLines.size() > maxLines - statusLineAdditions.size()) {
+		//int maxLines = 20;
+		/*while (statusLines.size() > 0 && statusLines.size() > maxLines - statusLineAdditions.size()) {
 			statusLines.remove(statusLines.get(statusLines.size() - 1));
-		}
+		}*/
 		for (String s : statusLineAdditions) {
 			statusLines.add(0, s);
 		}
